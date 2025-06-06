@@ -1,0 +1,54 @@
+import tkinter as tk
+import random
+from PIL import Image, ImageTk
+
+def iniciar_jogo():
+    global numero_secreto, tentativas
+    numero_secreto = random.randint(1, 10)
+    tentativas = 0
+    resultado['text'] = " "
+    
+def verificar_resultado():
+    pass
+
+def incluir_imagem():
+    pass
+
+#INTERFACE GRAFICA
+
+tela_jogo = tk.Tk()
+tela_jogo.title("Jogo de adivinhação do Jonas")
+tela_jogo.geometry("400x500")
+tela_jogo.configure(background='lightblue')
+
+instrucao = tk.Label(tela_jogo, text='Adivinhe um número entre 1 a 10:',font=('Comic Sans MS', 15),bg= 'light blue')
+instrucao.pack(pady=10)
+nome_jogador = tk.Label(tela_jogo, text= 'Informe seu nome: ',font=('Comic Sans MS', 15),bg= 'light blue' )
+nome_jogador.pack(pady=15)
+
+entrada_nome = tk.Entry(tela_jogo, justify= "center", background='Blue', font=('Arial', 14))
+entrada_nome.pack(pady=5)
+
+palpite = tk.Label(tela_jogo, text='Informe um número: ', font=('Comic Sans MS', 15),bg= 'light blue' )
+palpite.pack(pady=13.5)
+
+entrada_palpite = tk.Entry(tela_jogo, justify='center', background='Blue', font=('Arial', 14))
+entrada_palpite.pack(pady= 5)
+
+botao = tk.Button(tela_jogo, text= 'VERIFICAR',font=('Arial', 14))
+botao.pack(pady=10)
+
+resultado = tk.Label(tela_jogo, text=' ', font=('Comic Sans MS', 15),bg= 'light blue' )
+resultado.pack(pady=10)
+
+figura = tk.Label(tela_jogo, image= '', background='light blue')
+figura.pack(pady= 10)
+imagem = Image.open('mundoSenai.jpg')
+imagem2 = imagem.resize((400,200))
+imagem_tk = ImageTk.PhotoImage(imagem2)
+
+imagem_rodape = tk.Label(tela_jogo, image=imagem_tk)
+
+imagem_rodape.pack(pady=10)
+
+tela_jogo.mainloop()
